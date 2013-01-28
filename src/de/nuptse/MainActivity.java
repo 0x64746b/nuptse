@@ -44,6 +44,36 @@ public class MainActivity extends Activity {
 		new CheckStateTask().execute();
 	}
 
+	protected void showMountButton() {
+		Button button = (Button)findViewById(R.id.button_mount);
+		button.setVisibility(View.VISIBLE);
+
+		button.setText(R.string.mount);
+		button.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				Log.d(CLASS, String.format("Mounting '%s'", mDevice));
+				///TODO: new MountTask().execute();
+			}
+		});
+	}
+
+	protected void showUnmountButton() {
+		Button button = (Button)findViewById(R.id.button_mount);
+		button.setVisibility(View.VISIBLE);
+
+		button.setText(R.string.unmount);
+		button.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				Log.d(CLASS, String.format("Unmounting '%s'", mDevice));
+				new UnmountTask().execute();
+			}
+		});
+	}
+
 	protected void displayMessage(String message) {
 		TextView guiOutput = (TextView)findViewById(R.id.text_output);
 		guiOutput.setTextColor(Color.WHITE);
@@ -103,29 +133,10 @@ public class MainActivity extends Activity {
 			String message = String.format("%s is mounted: %s", mDevice, mounted);
 			Log.d(CLASS, message);
 			
-			Button mountButton = (Button)findViewById(R.id.button_mount);
-			mountButton.setVisibility(View.VISIBLE);
-			
 			if (mounted) {
-				mountButton.setText(R.string.unmount);
-				mountButton.setOnClickListener(new OnClickListener() {
-					
-					@Override
-					public void onClick(View v) {
-						Log.d(CLASS, String.format("Unmounting '%s'", mDevice));
-						new UnmountTask().execute();
-					}
-				});
+				showUnmountButton();
 			} else {
-				mountButton.setText(R.string.mount);
-				mountButton.setOnClickListener(new OnClickListener() {
-					
-					@Override
-					public void onClick(View v) {
-						Log.d(CLASS, String.format("Mounting '%s'", mDevice));
-						///TODO: new MountTask().execute();
-					}
-				});
+				showMountButton();
 			}
 
 			displayMessage(message);
