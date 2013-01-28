@@ -181,6 +181,7 @@ public class MainActivity extends Activity {
 			String output = result.getOutput();
 			
 			if (exitCode == 0) {
+				showMountButton();
 				displayMessage(String.format("Successfully unmounted '%s'", mDevice));
 			} else {
 				String error = String.format("Failed to unmount %s. umount exited with code %d: %s",
