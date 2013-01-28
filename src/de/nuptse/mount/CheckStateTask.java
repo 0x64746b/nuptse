@@ -1,4 +1,4 @@
-package de.nuptse;
+package de.nuptse.mount;
 
 import android.os.AsyncTask;
 import android.util.Log;
@@ -12,11 +12,11 @@ class CheckStateTask extends AsyncTask<Void, Void, Boolean> {
 
 	private final String CLASS = CheckStateTask.class.getSimpleName();
 
-	private MainActivity mParent = null;
+	private MountActivity mParent = null;
 	private Boolean mMounted = false;
 	private Exception mError = null;
 
-	public CheckStateTask(MainActivity parent) {
+	public CheckStateTask(MountActivity parent) {
 		mParent = parent;
 	}
 

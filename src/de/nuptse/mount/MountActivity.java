@@ -1,4 +1,4 @@
-package de.nuptse;
+package de.nuptse.mount;
 
 import android.app.Activity;
 import android.graphics.Color;
@@ -8,11 +8,12 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
+import de.nuptse.R;
 
 
-public class MainActivity extends Activity {
+public class MountActivity extends Activity {
 
-	private final static String CLASS = MainActivity.class.getSimpleName();
+	private final static String CLASS = MountActivity.class.getSimpleName();
 	
 	public final String mDevice = "/dev/block/mmcblk1p1";
 	public final String mMountPoint = "/storage/sdcard1";
@@ -28,7 +29,7 @@ public class MainActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				new CheckStateTask(MainActivity.this).execute();
+				new CheckStateTask(MountActivity.this).execute();
 			}
 		});
 	}
@@ -63,7 +64,7 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				Log.d(CLASS, String.format("Unmounting '%s'", mDevice));
-				new UnmountTask(MainActivity.this).execute();
+				new UnmountTask(MountActivity.this).execute();
 			}
 		});
 	}

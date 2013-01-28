@@ -1,4 +1,4 @@
-package de.nuptse;
+package de.nuptse.mount;
 
 import android.os.AsyncTask;
 import android.util.Log;
@@ -10,11 +10,11 @@ class UnmountTask extends AsyncTask<Void, Void, ShellCommandResult> {
 
 	private final static String CLASS = UnmountTask.class.getSimpleName();
 
-	private MainActivity mParent = null;
+	private MountActivity mParent = null;
 	private Exception mError = null;
 
 
-	public UnmountTask(MainActivity parent) {
+	public UnmountTask(MountActivity parent) {
 		mParent = parent;
 	}
 

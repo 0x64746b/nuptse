@@ -1,4 +1,4 @@
-package de.nuptse;
+package de.nuptse.mount;
 
 class ShellCommandResult {
     private final int mExitCode;
