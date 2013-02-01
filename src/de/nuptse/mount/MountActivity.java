@@ -49,7 +49,7 @@ public class MountActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				Log.d(CLASS, String.format("Mounting '%s'", mDevice));
-				///TODO: new MountTask().execute();
+				new MountTask(MountActivity.this).execute();
 			}
 		});
 	}
