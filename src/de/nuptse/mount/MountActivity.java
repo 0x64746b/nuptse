@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import de.nuptse.R;
 
@@ -25,7 +26,7 @@ public class MountActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		((Button)findViewById(R.id.button_refresh)).setOnClickListener(new OnClickListener() {
+		((ImageButton)findViewById(R.id.button_refresh)).setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {

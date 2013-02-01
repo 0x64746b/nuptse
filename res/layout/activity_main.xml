@@ -12,16 +12,14 @@
 	            android:id="@+id/button_mount"
 	            android:layout_width="0dip"
 	            android:layout_height="wrap_content"
-	            android:layout_weight="3.0"
+	            android:layout_weight="1.0"
 	            android:visibility="invisible" />
 	
-	        <Button
+	        <ImageButton
 	            android:id="@+id/button_refresh"
-	            android:layout_width="0dip"
+	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
-	            android:layout_weight="1.0"
-	            android:text="@string/refresh" />
-
+                android:src="@drawable/ic_menu_refresh" />
 	    </LinearLayout>
 	        
         <TextView
