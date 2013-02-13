@@ -5,5 +5,22 @@
     <string name="mount">Mount</string>
     <string name="unmount">Unmount</string>
     <string name="refresh">Refresh</string>
+    <string name="title_settings">Settings</string>
+
+    <!-- Settings -->
+    <!-- Device -->
+    <string name="settings_key_device">device</string>
+    <string name="settings_title_device">Device</string>
+    <string name="settings_default_device">/dev/block/mmcblk1p1</string>
+
+    <!-- Mount point -->
+    <string name="settings_key_mountpoint">mountpoint</string>
+    <string name="settings_title_mountpoint">Mount point</string>
+    <string name="settings_default_mountpoint">/storage/sdcard1</string>
+
+    <!-- FS type -->
+    <string name="settings_key_fstype">fstype</string>
+    <string name="settings_title_fstype">File sytem type</string>
+    <string name="settings_default_fstype">ext4</string>
 
 </resources>

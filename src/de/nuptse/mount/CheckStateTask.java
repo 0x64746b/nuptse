@@ -1,11 +1,15 @@
 package de.nuptse.mount;
 
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.preference.PreferenceManager;
 import android.util.Log;
 
 import com.stericson.RootTools.Command;
 import com.stericson.RootTools.RootTools;
 import com.stericson.RootTools.Shell;
+
+import de.nuptse.R;
 
 
 class CheckStateTask extends AsyncTask<Void, Void, Boolean> {
@@ -13,12 +17,29 @@ class CheckStateTask extends AsyncTask<Void, Void, Boolean> {
 	private final String CLASS = CheckStateTask.class.getSimpleName();
 
 	private MountActivity mParent = null;
+	private String mDevice = null;
+	private String mMountPoint = null;
+	private String mFSType = null;
 	private Boolean mMounted = false;
 	private Exception mError = null;
 
 	public CheckStateTask(MountActivity parent) {
 		mParent = parent;
+		SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(mParent);
+
+		String key = mParent.getResources().getString(R.string.settings_key_device);
+		String dflt = mParent.getResources().getString(R.string.settings_default_device);
+		mDevice = settings.getString(key, dflt);
+
+		key = mParent.getResources().getString(R.string.settings_key_mountpoint);
+		dflt = mParent.getResources().getString(R.string.settings_default_mountpoint);
+		mMountPoint = settings.getString(key, dflt);
+
+		key = mParent.getResources().getString(R.string.settings_key_fstype);
+		dflt = mParent.getResources().getString(R.string.settings_default_fstype);
+		mFSType = settings.getString(key, dflt);
 	}
+
 
 	@Override
 	protected Boolean doInBackground(Void... params) {
@@ -31,8 +52,8 @@ class CheckStateTask extends AsyncTask<Void, Void, Boolean> {
 			@Override
 			public void output(int id, String line) {
 				Log.d(CLASS, String.format("Checking output of mount: %s", line));
-				String regex = String.format("^%s %s %s.*", mParent.mDevice,
-						                     mParent.mMountPoint, mParent.mType);
+				String regex = String.format("^%s %s %s.*", mDevice,
+						                     mMountPoint, mFSType);
 				if (line.matches(regex)) {
 					Log.d(CLASS, String.format("Device is mounted: %s", line));
 					mMounted = true;
@@ -57,7 +78,7 @@ class CheckStateTask extends AsyncTask<Void, Void, Boolean> {
 
 	@Override
 	protected void onPostExecute(Boolean mounted) {
-		String message = String.format("%s is mounted: %s", mParent.mDevice, mounted);
+		String message = String.format("%s is mounted: %s", mDevice, mounted);
 		Log.d(CLASS, message);
 
 		if (mounted) {

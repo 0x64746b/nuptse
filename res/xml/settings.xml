@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+    <EditTextPreference
+        android:key="@string/settings_key_device"
+        android:title="@string/settings_title_device"
+        android:defaultValue="@string/settings_default_device" />
+
+    <EditTextPreference
+        android:key="@string/settings_key_mountpoint"
+        android:title="@string/settings_title_mountpoint"
+        android:defaultValue="@string/settings_default_mountpoint" />
+
+    <EditTextPreference
+        android:key="@string/settings_key_fstype"
+        android:title="@string/settings_title_fstype"
+        android:defaultValue="@string/settings_default_fstype" />
+
+</PreferenceScreen>
